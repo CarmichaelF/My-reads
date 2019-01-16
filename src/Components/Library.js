@@ -10,8 +10,7 @@ class Library extends Component {
         <Book title = {element.title}
         key = {i} src = {element.imageLinks.thumbnail}
         author = {this.treatAuthor(element.authors)}></Book>
-    ) :null ;
-    console.log(books);
+    ) :null;
     return (
         <div className = "library">
         <h2 className = "pb-3">{this.props.title}</h2>

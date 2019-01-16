@@ -9,7 +9,7 @@ class Book extends Component {
             <img src = {this.props.src}  className = "card-img-top shadow" alt="book"></img>
             
             <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button className="btn btn-secondary dropdown-toggle shadow" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenu">
                 <button className="dropdown-item" type="button">Currently Reading</button>

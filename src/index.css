@@ -52,6 +52,10 @@ header h1{
     padding-bottom: 20px;
 }
 
+.card-body p{
+    color: #555555;
+}
+
 .library h2{
     font-size: 1.3em;
 }
