@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
 
 class Book extends Component {
+
   render() {
     return (
         <div className = "book">
         <div>
-            <img src = {require("../Images/harry.jpg")}  className = "card-img-top" alt="book"></img>
+            <img /*src = {require("../Images/harry.jpg")}*/src = {this.props.src}  className = "card-img-top" alt="book"></img>
             
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div className="dropdown">
+                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <button class="dropdown-item" type="button">Action</button>
-                <button class="dropdown-item" type="button">Another action</button>
-                <button class="dropdown-item" type="button">Something else here</button>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenu">
+                <button className="dropdown-item" type="button">Currently Reading</button>
+                <button className="dropdown-item" type="button">Want to Read</button>
+                <button className="dropdown-item" type="button">Read</button>
+                <button className="dropdown-item" type="button">None</button>
             </div>
         </div>
 
         </div>
             <div className = "card-body">
-                <h5 className = "card-title">Book title</h5>
-                <p className = "card-text">Book author</p>
+                <h5 className = "card-title">{this.props.title}</h5>
+                <p className = "card-text">{this.props.author}</p>
             </div>
         </div>
     );

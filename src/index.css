@@ -24,21 +24,21 @@ header h1{
     font-size: 1.5em;
 }
 
-.book button{
+.btn-secondary{
     border-radius: 50%;
 }
 
-.book .dropdown{
+.dropdown{
     font-size: 1.5em;
     margin-top: -20px;
     margin-right: -150px;
 }
 
-.dropdown button{
+.btn-secondary{
     background-color: #c0392b;
     border: none;
 }
-.dropdown button:hover{
+.btn-secondary:hover{
     background-color: #e74c3c;
 }
 
