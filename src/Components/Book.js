@@ -6,7 +6,7 @@ class Book extends Component {
     return (
         <div className = "book">
         <div>
-            <img /*src = {require("../Images/harry.jpg")}*/src = {this.props.src}  className = "card-img-top" alt="book"></img>
+            <img src = {this.props.src}  className = "card-img-top shadow" alt="book"></img>
             
             <div className="dropdown">
                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

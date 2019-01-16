@@ -4,26 +4,27 @@ import Book from './Book';
 class Library extends Component {
 
   render() {
-    let books = this.props.books;
+    const books = this.props.books;
+    
+    const cmpBooks = books !== null ? books.map((element,i) =>
+        <Book title = {element.title}
+        key = {i} src = {element.imageLinks.thumbnail}
+        author = {this.treatAuthor(element.authors)}></Book>
+    ) :null ;
+    console.log(books);
     return (
-        <div className = "text-center">
-      <header><h1>Welcome to MyReads!</h1></header>
-        <div className = "row pt-3">
-          <div className = "col-md-12">
-          {
-              books !== null ?
-              books.foreach((element) =>{
-                <Book src = {element.imageLinks.thumbnail}
-                ></Book>
-              }): null
-              /*(this.props.books !== null) ? 
-          <Book src = {this.props.books[0].imageLinks.thumbnail}>
-          </Book> : null*/
-        }
-          </div>
+        <div className = "library">
+        <h2 className = "pb-3">{this.props.title}</h2>
+        {cmpBooks}
         </div>
-      </div>
       );
+  }
+
+  treatAuthor(authors){
+    if(authors.length > 1){
+        return authors.map((author) => ' | ' + author + ' | ');
+    }
+    return authors;
   }
 }
 

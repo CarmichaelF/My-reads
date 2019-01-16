@@ -11,7 +11,20 @@ class App extends Component {
 
   render() {
     return (
-      <Library books = {this.state.books}></Library>
+      <div>
+        <div className = "text-center">
+      <header><h1>Welcome to MyReads!</h1></header>
+        <div className = "row pt-3">
+          <div className = "col-md-6">
+          <Library title = "Currently Reading" books = {this.state.books}></Library>
+          </div>
+          <div className = "col-md-6">
+          <Library title = "Want to Read" books = {this.state.books}></Library>
+          </div>
+        </div>
+      </div>
+      
+      </div>
       );
   }
   getAllBooks(){
