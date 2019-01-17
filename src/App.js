@@ -6,6 +6,7 @@ class App extends Component {
 
   constructor(props){
     super(props);
+    this.updateBookShelf = this.updateBookShelf.bind(this);
     this.state = { currently: null,
       want: null,
       read: null};
@@ -14,19 +15,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className = "text-center">
+        <div>
       <header><h1>Welcome to MyReads!</h1></header>
-        <div className = "row pt-3">
-          <div className = "col-md-6">
-          <Library title = "Currently Reading" books = {this.state.currently}></Library>
-          </div>
-          <div className = "col-md-6">
-          <Library title = "Want to Read" books = {this.state.want}></Library>
-          </div>
-          <div className = "col-md-6">
-          <Library title = "Read" books = {this.state.read}></Library>
-          </div>
-        </div>
+          <Library updateBook = {() => this.updateBookShelf} title = "Currently Reading" books = {this.state.currently}></Library>
+          <Library updateBook = {() => this.updateBookShelf} title = "Want to Read" books = {this.state.want}></Library>
+          <Library updateBook = {() => this.updateBookShelf} title = "Read" books = {this.state.read}></Library>
       </div>
       </div>
       );
@@ -48,17 +41,34 @@ class App extends Component {
     }
   }
 
-  getAllBooks(){
-    return BooksAPI.getAll();
+  updateBookShelf(bookId, shelf){
+    BooksAPI.update(bookId, shelf)
+    .then(() =>{
+      this.getAllBooks();
+    })
+    .catch((e) =>{
+        console.log("Error", e);
+    });
   }
-  componentDidMount() {
-    this.getAllBooks()
-    .then(result => 
+
+  getAllBooks(){
+    BooksAPI.getAll().then(result => 
       this.setShelf(result))
     .catch((e) =>{
       console.log("Error", e);
-    })
-    
+    });
+  }
+
+  printAllBooks(){
+    BooksAPI.getAll().then(result => 
+      console.log("All books: ", result))
+    .catch((e) =>{
+      console.log("Error", e);
+    });
+  }
+  componentDidMount() {
+    this.getAllBooks();
+    this.printAllBooks();
   }
   
 }
