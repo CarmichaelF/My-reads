@@ -33,15 +33,15 @@ class Book extends Component {
     console.log(book);
     switch(choose){
         case 'C':
-            this.props.updateBook(book, 'currentlyReading');
+            this.props.updateBookShelf(book, 'currentlyReading');
             console.log('C');
         break;
         case 'W':
-            this.props.updateBook(book, 'wantToRead');
+            this.props.updateBookShelf(book, 'wantToRead');
             console.log('W');
         break;
         case 'R':
-            this.props.updateBook(book, 'read');
+            this.props.updateBookShelf(book, 'read');
             console.log('R');
         break;
         default:

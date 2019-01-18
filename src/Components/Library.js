@@ -1,33 +1,18 @@
 /* eslint-disable no-unused-expressions */
 import React, { Component } from 'react';
-import Book from './Book';
+import Shelf from './Shelf';
+import { Link } from 'react-router-dom';
 
 class Library extends Component {
 
   render() {
-    const books = this.props.books;
-    
-    const cmpBooks = books !== null ? books.map((element) =>
-        <Book updateBook = {this.props.updateBook()} title = {element.title}
-        key = {element.id} src = {element.imageLinks.thumbnail}
-        author = {this.treatAuthor(element.authors)}
-        id = {element.id}></Book>
-    ) :null;
-    return (
-        <div className = "library">
-        <h2 className = "shelf-title pt-4 pb-4">{this.props.title}</h2>
-        <div className = "d-flex justify-content-around container text-center">
-        {cmpBooks}
-        </div>
-        </div>
-      );
-  }
-
-  treatAuthor(authors){
-    if(authors.length > 1){
-        return authors.map((author) => author + ' ');
-    }
-    return authors;
+    return <div>
+      <header><h1>Welcome to MyReads!</h1></header>  
+        <Shelf updateBook = {this.props.updateBookShelf} title = "Currently Reading" books = {this.props.books.currently}></Shelf>
+        <Shelf updateBook = {this.props.updateBookShelf} title = "Want to Read" books = {this.props.books.want}></Shelf>
+        <Shelf updateBook = {this.props.updateBookShelf} title = "Read" books = {this.props.books.read}></Shelf>
+        <Link className = "btn-search" to = '/search'><i className = "fas fa-search"></i></Link>
+    </div>
   }
 }
 

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Library from './Components/Library';
+import { Route } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI'
+import Library from './Components/Library';
+import Search from './Components/Search';
 
 class App extends Component {
 
@@ -15,12 +17,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div>
-      <header><h1>Welcome to MyReads!</h1></header>
-          <Library updateBook = {() => this.updateBookShelf} title = "Currently Reading" books = {this.state.currently}></Library>
-          <Library updateBook = {() => this.updateBookShelf} title = "Want to Read" books = {this.state.want}></Library>
-          <Library updateBook = {() => this.updateBookShelf} title = "Read" books = {this.state.read}></Library>
-      </div>
+        <Route exact path = '/' render = {() => (
+          <Library updateBookShelf = {this.updateBookShelf} 
+          books = {{currently: this.state.currently, want :this.state.want, read: this.state.read}}></Library>
+      )}></Route>
+          <Route path = '/search' render = {() => (
+        <Search searchBook = {this.searchBook}/>
+      )}/>
       </div>
       );
   }
@@ -69,6 +72,13 @@ class App extends Component {
   componentDidMount() {
     this.getAllBooks();
     this.printAllBooks();
+  }
+
+  searchBook(terms){
+    console.log('terms: ', terms);
+    BooksAPI.search(terms).then((result) =>{
+      console.log(result);
+    });
   }
   
 }
