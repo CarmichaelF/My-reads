@@ -22,7 +22,7 @@ class App extends Component {
           books = {{currently: this.state.currently, want :this.state.want, read: this.state.read}}></Library>
       )}></Route>
           <Route path = '/search' render = {() => (
-        <Search searchBook = {this.searchBook}/>
+        <Search/>
       )}/>
       </div>
       );
@@ -72,13 +72,6 @@ class App extends Component {
   componentDidMount() {
     this.getAllBooks();
     this.printAllBooks();
-  }
-
-  searchBook(terms){
-    console.log('terms: ', terms);
-    BooksAPI.search(terms).then((result) =>{
-      console.log(result);
-    });
   }
   
 }
