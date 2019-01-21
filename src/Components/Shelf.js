@@ -6,20 +6,23 @@ class Shelf extends Component {
 
   render() {
     const books = this.props.books;
-    console.log("books: ", books);
+    console.log("Props: ", this.props.books);
     const cmpBooks = books && Array.isArray(books)
     ? books.map((element) =>
         element !== undefined && element.imageLinks && element.authors ?
         <Book updateBookShelf = {this.props.updateBook} title = {element.title}
         key = {element.id} src = {element.imageLinks.thumbnail}
         author = {this.treatAuthor(element.authors)}
-        id = {element.id}></Book>:null
+        id = {element.id}
+        shelf = {this.props.shelf}></Book>:null
     ) :null ;
     return (
-      <div>
-        <h2 className = "shelf-title pt-4 pb-4">{this.props.title}</h2>
-        <div className = "d-flex justify-content-around container text-center">
-        {cmpBooks}
+      <div className = "container">
+        <div>
+          <h2 className = "shelf-title pt-4 pb-4">{this.props.title}</h2>
+          <div className = "d-flex flex-wrap justify-content-around text-center m-5">
+          {cmpBooks}
+          </div>
         </div>
       </div>
       );

@@ -22,29 +22,32 @@ class App extends Component {
           books = {{currently: this.state.currently, want :this.state.want, read: this.state.read}}></Library>
       )}></Route>
           <Route path = '/search' render = {() => (
-        <Search/>
+        <Search updateBookShelf = {this.updateBookShelf}/>
       )}/>
       </div>
       );
   }
 
-  setShelf(books){
+  setShelf(books, id){
     let currently, want, read;
     if(books !== null){
         currently = books.filter((element) =>{
-        return element.shelf === "currentlyReading";
+        return element.shelf === "currentlyReading" && element.id !== id;
       });
         want = books.filter((element) =>{
-        return element.shelf === "wantToRead";
+        return element.shelf === "wantToRead" && element.id !== id;
       });
         read = books.filter((element) =>{
-        return element.shelf === "read";
+        return element.shelf === "read" && element.id !== id;
       });
       this.setState({currently, want, read});
     }
   }
 
   updateBookShelf(bookId, shelf){
+    if(shelf === 'none'){
+      this.getAllBooks(bookId);
+    }
     BooksAPI.update(bookId, shelf)
     .then(() =>{
       this.getAllBooks();
@@ -54,26 +57,17 @@ class App extends Component {
     });
   }
 
-  getAllBooks(){
+  getAllBooks(bookId){
     BooksAPI.getAll().then(result => 
-      this.setShelf(result))
+      this.setShelf(result, bookId))
     .catch((e) =>{
       console.log("Error", e);
     });
   }
 
-  printAllBooks(){
-    BooksAPI.getAll().then(result => 
-      console.log("All books: ", result))
-    .catch((e) =>{
-      console.log("Error", e);
-    });
-  }
   componentDidMount() {
     this.getAllBooks();
-    this.printAllBooks();
   }
-  
 }
 
 export default App;

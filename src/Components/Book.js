@@ -15,7 +15,7 @@ class Book extends Component {
                 <button onClick = {() => this.moveTo('C')} className="dropdown-item" type="button">Currently Reading</button>
                 <button onClick = {() => this.moveTo('W')} className="dropdown-item" type="button">Want to Read</button>
                 <button onClick = {() => this.moveTo('R')} className="dropdown-item" type="button">Read</button>
-                <button className="dropdown-item" type="button">None</button>
+                <button onClick = {() => this.moveTo('N')}className="dropdown-item" type="button">None</button>
             </div>
         </div>
 
@@ -26,6 +26,8 @@ class Book extends Component {
             </div>
         </div>
     );
+
+    
   }
 
   moveTo(choose){
@@ -44,6 +46,10 @@ class Book extends Component {
             this.props.updateBookShelf(book, 'read');
             console.log('R');
         break;
+        case 'N':
+            this.props.updateBookShelf(book, 'none');
+            console.log('N');
+            break;
         default:
         console.log(`${choose} isn't a valid argument!`);
     }

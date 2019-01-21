@@ -21,7 +21,7 @@ class Search extends Component {
     <input onChange = {(event) => this.searchBook(event.target.value)} placeholder = "Search for a title or an Author..." type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></input>
     
     </div>
-    <Shelf title = "Results" books = {this.state.searchedBooks}></Shelf>
+    <Shelf updateBook = {this.props.updateBookShelf} title = "Results" books = {this.state.searchedBooks}></Shelf>
     </div>
   }
 
