@@ -4,6 +4,8 @@ import Book from './Book';
 
 class Shelf extends Component {
 
+  //Map through all the components calling the Book
+  //Component and pass the correct Props.
   render() {
     const books = this.props.books;
     console.log("Props: ", this.props.books);
@@ -28,6 +30,7 @@ class Shelf extends Component {
       );
   }
 
+  //Treat the array of authors from the API.
   treatAuthor(authors){
     if(authors){
       if(authors.length > 1){

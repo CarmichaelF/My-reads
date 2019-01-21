@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class Book extends Component {
 
+  //Load the basic HTML of the book.
   render() {
     return (
         <div className = "book">
@@ -30,6 +31,7 @@ class Book extends Component {
     
   }
 
+  //Used to call the API method and update the Shelf.
   moveTo(choose){
     const book = this.props;
     console.log(book);

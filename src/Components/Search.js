@@ -13,6 +13,7 @@ class Search extends Component {
   }
 
   render() {
+    //Render the first HTML of the Search page.
     return <div>
     <div className="input-group input-group-lg">
     <div className="input-group-prepend">
@@ -25,6 +26,7 @@ class Search extends Component {
     </div>
   }
 
+  //Use the search method from the API to set the state of the component.
   searchBook(terms){
     BooksAPI.search(terms).then((result) =>{
       if(result){

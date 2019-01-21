@@ -4,7 +4,8 @@ import Shelf from './Shelf';
 import { Link } from 'react-router-dom';
 
 class Library extends Component {
-z
+
+  //Use the Shelf Component to load the HTML needed.
   render() {
     return <div>
       <header><h1>Welcome to MyReads!</h1></header>  
