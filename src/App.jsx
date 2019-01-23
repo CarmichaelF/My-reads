@@ -13,23 +13,6 @@ class App extends Component {
       want: null,
       read: null};
   }
-
-  render() {
-    //It'll render the Library Component if the path match with '/'.
-    return (
-      <div>  
-        <Route exact path = '/' render = {() => (
-          <Library updateBookShelf = {this.updateBookShelf} 
-          books = {{currently: this.state.currently, want :this.state.want, read: this.state.read}}></Library>
-      )}></Route>
-          <Route path = '/search' render = {() => (
-        <Search updateBookShelf = {this.updateBookShelf}/>
-      )}/>
-      </div>
-      );
-    //It'll render the Search Component if the path match with '/search'.
-  }
-
   //Receive an array of books and an id that is used to filter the data from API.
   setShelf(books, id){
     let currently, want, read;
@@ -57,7 +40,7 @@ class App extends Component {
       this.getAllBooks();
     })
     .catch((e) =>{
-        console.log("Error", e);
+      console.log("Error", e);
     });
   }
 
@@ -73,6 +56,24 @@ class App extends Component {
   //When the component mount the data will be called
   componentDidMount() {
     this.getAllBooks();
+  }
+
+  render() {
+    //It'll render the Library Component if the path match with '/'.
+    return (
+      <div>  
+        <Route exact path = '/' render = {() => (
+          <Library
+          updateBookShelf = {this.updateBookShelf} 
+          books = {{currently: this.state.currently, want :this.state.want, read: this.state.read}} />
+      )}></Route>
+          <Route path = '/search' render = {() => (
+            <Search 
+            updateBookShelf = {this.updateBookShelf} />
+      )}/>
+      </div>
+      );
+    //It'll render the Search Component if the path match with '/search'.
   }
 }
 
