@@ -30,20 +30,24 @@ class Search extends Component {
     <div className="input-group-prepend">
     <Link className="input-group-text" to = '/'><i className ="fas fa-arrow-left"></i></Link>
     </div>
-    <input 
-      onChange = {(event) => this.searchBook(event.target.value)} 
-      placeholder = "Search for a title or an Author..." 
-      type="text" 
-      className="form-control" 
-      aria-label="Sizing example input" 
+    <input
+      onChange = {(event) => this.searchBook(event.target.value)}
+      placeholder = "Search for a title or an Author..."
+      type="text"
+      className="form-control"
+      aria-label="Search for a title or an Author"
       aria-describedby="inputGroup-sizing-lg">
     </input>
     
     </div>
-    <Shelf 
+    <Shelf
       updateBook = {this.props.updateBookShelf} 
       title = "Results" 
       books = {this.state.searchedBooks} />
+      <Shelf
+      updateBook = {this.props.updateBookShelf} 
+      title = "Already in a shelf:" 
+      books = {this.props.books} />
     </div>
   }
 }

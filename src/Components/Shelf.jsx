@@ -28,7 +28,7 @@ class Shelf extends Component {
         src = {element.imageLinks.thumbnail}
         author = {this.treatAuthor(element.authors)}
         id = {element.id}
-        shelf = {this.props.shelf} />:null
+        shelf = {element.shelf} />:null
     ) :null ;
     return (
       <div className = "container">

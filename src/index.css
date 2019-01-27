@@ -113,3 +113,13 @@ header h1{
     background-color: #e74c3c;
     text-decoration: none;
 }
+
+.dropdown-item-active{
+    background-color: #c0392b;
+    color: #ffffff;
+}
+
+.dropdown-item:hover{
+    background-color: #e74c3c;
+    color: #ffffff;
+}

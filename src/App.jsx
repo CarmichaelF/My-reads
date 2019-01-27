@@ -9,25 +9,17 @@ class App extends Component {
   constructor(props){
     super(props);
     this.updateBookShelf = this.updateBookShelf.bind(this);
-    this.state = { currently: null,
-      want: null,
-      read: null};
+    this.state = { books: null };
   }
   //Receive an array of books and an id that is used to filter the data from API.
   setShelf(books, id){
-    let currently, want, read;
+    let booksFiltered = books;
     if(books !== null){
-        currently = books.filter((element) =>{
-        return element.shelf === "currentlyReading" && element.id !== id;
+      booksFiltered.shelf = books.filter((element) =>{
+        return element.shelf && element.id !== id;
       });
-        want = books.filter((element) =>{
-        return element.shelf === "wantToRead" && element.id !== id;
-      });
-        read = books.filter((element) =>{
-        return element.shelf === "read" && element.id !== id;
-      });
-      this.setState({currently, want, read});
     }
+    this.setState({books});
   }
 
   //It's used to update the Shelf based on the API method.
@@ -65,11 +57,12 @@ class App extends Component {
         <Route exact path = '/' render = {() => (
           <Library
           updateBookShelf = {this.updateBookShelf} 
-          books = {{currently: this.state.currently, want :this.state.want, read: this.state.read}} />
+          books = {this.state.books} />
       )}></Route>
           <Route path = '/search' render = {() => (
             <Search 
-            updateBookShelf = {this.updateBookShelf} />
+            updateBookShelf = {this.updateBookShelf}
+            books = {this.state.books} />
       )}/>
       </div>
       );

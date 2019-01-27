@@ -36,7 +36,7 @@ class Book extends Component {
                 <button onClick = {() => this.moveTo('C')} className="dropdown-item" type="button">Currently Reading</button>
                 <button onClick = {() => this.moveTo('W')} className="dropdown-item" type="button">Want to Read</button>
                 <button onClick = {() => this.moveTo('R')} className="dropdown-item" type="button">Read</button>
-                <button onClick = {() => this.moveTo('N')}className="dropdown-item" type="button">None</button>
+                <button onClick = {() => this.moveTo('N')} className="dropdown-item" type="button">None</button>
             </div>
         </div>
 
@@ -44,6 +44,7 @@ class Book extends Component {
             <div className = "card-body">
                 <h5 className = "card-title">{this.props.title}</h5>
                 <p className = "card-text">{this.props.author}</p>
+                <p>Shelf: {this.props.shelf}</p>
             </div>
         </div>
     );
