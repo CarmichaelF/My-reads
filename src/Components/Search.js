@@ -16,11 +16,20 @@ class Search extends Component {
   searchBook(terms){
     BooksAPI.search(terms).then((result) =>{
       if(result){
-        this.setState({searchedBooks: result});
+        this.setState({searchedBooks: this.filter(result)});
       }
     }).catch((e) =>{
       console.log("Error", e);
     });
+  }
+
+  filter(books){
+    const booksWithShelf = this.props.books
+      return books.map((book) => {
+        const booksFound = booksWithShelf.find(myBook => myBook.id === book.id);
+        book.shelf = booksFound ? booksFound.shelf : 'none'
+        return book;
+    })
   }
 
   render() {
@@ -44,10 +53,6 @@ class Search extends Component {
       updateBook = {this.props.updateBookShelf} 
       title = "Results" 
       books = {this.state.searchedBooks} />
-      <Shelf
-      updateBook = {this.props.updateBookShelf} 
-      title = "Already in a shelf:" 
-      books = {this.props.books} />
     </div>
   }
 }
