@@ -2,7 +2,9 @@
   "name": "frontend-my-reads",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://carmichaelf.github.io/My-reads/",
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "install": "^0.12.2",
     "npm": "^6.5.0",
     "react": "^16.7.0",
@@ -14,6 +16,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
